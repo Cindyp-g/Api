@@ -34,8 +34,16 @@ constructor(private categoriaSvc: CategoriaService) {}
     }
 
 
-    @Delete(':cvecategoria')
+    @Delete(':cveCategoria')
     async eliminarCategorias(@Param('cveCategoria', ParseIntPipe) cveCategoria: number) {
+        
+        // Verificar si existen productos
+        const productos = await this.categoriaSvc.verificarProductosPorCategoria(cveCategoria);
+        if (productos.length > 0) {
+            throw new BadRequestException('La categoria tiene productos asignados');
+        }
+
+
         return await this.categoriaSvc.eliminar(cveCategoria);
     }
 

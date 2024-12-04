@@ -8,9 +8,10 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { GeneralModule } from './general/general.module';
 import { CategoriaModule } from './categoria/categoria.module';
 import { ProductoModule } from './producto/producto.module';
+import { VentaModule } from './venta/venta.module';
 
 @Module({
-  imports: [AuthModule, UsuarioModule, GeneralModule, CategoriaModule, ProductoModule],
+  imports: [AuthModule, UsuarioModule, GeneralModule, CategoriaModule, ProductoModule, VentaModule],
   controllers: [AppController],
   providers: [AppService, UtilsService,JwtService],
 })

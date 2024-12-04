@@ -30,6 +30,15 @@ export class CategoriaService {
         });
     }
 
+    async verificarProductosPorCategoria(cveCategoria: number) {
+        return await this.prismaSvc.producto.findMany({
+            where: {
+                cveCategoria : cveCategoria
+            }
+        });
+    }
+
+
     async verificarCategoriaEditar(cveCategoria: number, nombre: string) {
         return await this.prismaSvc.categoria.findMany({
             where: {
